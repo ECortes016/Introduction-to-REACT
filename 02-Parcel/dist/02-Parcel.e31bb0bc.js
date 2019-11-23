@@ -31736,28 +31736,89 @@ if ("development" === 'production') {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.default = exports.Navbar = exports.Navitem = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Navbar = function Navbar() {
-  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("nav", {
-    className: "navbar navbar-expand navbar-light bg-light"
-  }, _react.default.createElement("div", {
-    className: "nav navbar-nav"
+var Navitem = function Navitem(_ref) {
+  var props = Object.assign({}, _ref);
+  return _react.default.createElement("li", {
+    className: "nav-item"
   }, _react.default.createElement("a", {
-    className: "nav-item nav-link active",
+    href: props.link,
+    className: "nav-link"
+  }, props.text));
+};
+
+exports.Navitem = Navitem;
+
+var Navbar = function Navbar(_ref2) {
+  var props = Object.assign({}, _ref2);
+  return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("nav", {
+    className: "navbar navbar-expand-sm navbar-light bg-light"
+  }, _react.default.createElement("a", {
+    className: "navbar-brand",
+    href: "#"
+  }, props.title), _react.default.createElement("button", {
+    className: "navbar-toggler d-lg-none",
+    type: "button",
+    "data-toggle": "collapse",
+    "data-target": "#collapsibleNavId",
+    "aria-controls": "collapsibleNavId",
+    "aria-expanded": "false",
+    "aria-label": "Toggle navigation"
+  }, _react.default.createElement("span", {
+    className: "navbar-toggler-icon"
+  })), _react.default.createElement("div", {
+    className: "collapse navbar-collapse",
+    id: "collapsibleNavId"
+  }, _react.default.createElement("ul", {
+    className: "navbar-nav mr-auto mt-2 mt-lg-0"
+  }, _react.default.createElement("li", {
+    className: "nav-item active"
+  }, _react.default.createElement("a", {
+    className: "nav-link",
     href: "#"
   }, "Home ", _react.default.createElement("span", {
     className: "sr-only"
-  }, "(current)")), _react.default.createElement("a", {
-    className: "nav-item nav-link",
+  }, "(current)"))), _react.default.createElement("li", {
+    className: "nav-item"
+  }, _react.default.createElement("a", {
+    className: "nav-link",
     href: "#"
-  }, "About"))));
+  }, "Link")), _react.default.createElement("li", {
+    className: "nav-item dropdown"
+  }, _react.default.createElement("a", {
+    className: "nav-link dropdown-toggle",
+    href: "#",
+    id: "dropdownId",
+    "data-toggle": "dropdown",
+    "aria-haspopup": "true",
+    "aria-expanded": "false"
+  }, "Dropdown"), _react.default.createElement("div", {
+    className: "dropdown-menu",
+    "aria-labelledby": "dropdownId"
+  }, _react.default.createElement("a", {
+    className: "dropdown-item",
+    href: "#"
+  }, "Action 1"), _react.default.createElement("a", {
+    className: "dropdown-item",
+    href: "#"
+  }, "Action 2")))), _react.default.createElement("form", {
+    className: "form-inline my-2 my-lg-0"
+  }, _react.default.createElement("input", {
+    className: "form-control mr-sm-2",
+    type: "text",
+    placeholder: "Search"
+  }), _react.default.createElement("button", {
+    className: "btn btn-outline-success my-2 my-sm-0",
+    type: "submit"
+  }, "Search")))));
 };
 
+exports.Navbar = Navbar;
 var _default = Navbar;
 exports.default = _default;
 },{"react":"node_modules/react/index.js"}],"components/Jumbotron.js":[function(require,module,exports) {
@@ -31810,25 +31871,15 @@ var _Jumbotron = _interopRequireDefault(require("./components/Jumbotron"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// export default function app() {
-//     return (
-//         <div>
-//             My first apppppppppp!
-//         </div>
-//     )
-// }
 var _default = function _default() {
-  return _react.default.createElement(_Jumbotron.default, null);
+  return _react.default.createElement(_Navbar.default, {
+    title: "Mango Airlines"
+  });
 };
 
 exports.default = _default;
 },{"react":"node_modules/react/index.js","./components/Navbar":"components/Navbar.js","./components/Jumbotron":"components/Jumbotron.js"}],"index.js":[function(require,module,exports) {
 "use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Welcome = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -31836,27 +31887,20 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _App = _interopRequireDefault(require("./App"));
 
-var _Jumbotron = _interopRequireDefault(require("./components/Jumbotron"));
-
 var _Navbar = _interopRequireDefault(require("./components/Navbar"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import Jumbotron from './components/Jumbotron';
 // ReactDOM.render(<App />, document.getElementById('app'))
 // function Welcome(props) {
 //     return <h1>Welcome</h1>
 // }
-var Welcome = function Welcome(props) {
-  return _react.default.createElement("h1", null, "welcome to my apppppppppppp, ", props.name, ", the former ", props.skills);
-};
-
-exports.Welcome = Welcome;
-
-_reactDom.default.render(_react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Navbar.default, null), _react.default.createElement(_Jumbotron.default, null), _react.default.createElement(Welcome, {
-  name: "Michelle Obama",
-  skills: "First Lady"
-})), document.getElementById('app'));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./App":"App.js","./components/Jumbotron":"components/Jumbotron.js","./components/Navbar":"components/Navbar.js"}],"../../../../.npm/_npx/14782/lib/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+// export const Welcome = (props) => {
+//     return <h1>welcome to my apppppppppppp, {props.name}, the former {props.skills}</h1>
+// }
+_reactDom.default.render(_react.default.createElement(_App.default, null), document.getElementById('app'));
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./App":"App.js","./components/Navbar":"components/Navbar.js"}],"../../../../.npm/_npx/9596/lib/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -31884,7 +31928,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49714" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49687" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -32060,5 +32104,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../.npm/_npx/14782/lib/node_modules/parcel/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["../../../../.npm/_npx/9596/lib/node_modules/parcel/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/02-Parcel.e31bb0bc.js.map
